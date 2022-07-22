@@ -1,10 +1,8 @@
-# popup_banner
+# Popup Banner
 
 Popup Banner is a package to show banner slider using modal dialog. We can set the image location, auto slide settings, dots indicator and others.
 
-<p align="center">
-  <img src="https://i.ibb.co/MPRWfPN/popup-banner-trailer.gif"> 
-</p>
+![Popup Banner](https://media.giphy.com/media/4FLWYYtNDbkK7J0bpm/giphy-downsized-large.gif)
 
 ## Features
 - Customizable Popup
