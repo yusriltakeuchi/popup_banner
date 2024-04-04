@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:popup_banner/src/dialog_item.dart';
+import 'package:popup_banner_new/src/dialog_item.dart';
 
 class PopupBanner {
   final BuildContext context;

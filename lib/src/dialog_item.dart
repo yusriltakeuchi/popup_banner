@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:popup_banner/src/slider_item.dart';
+import 'package:popup_banner_new/src/slider_item.dart';
 
 class DialogItem extends StatelessWidget {
   final BuildContext context;

@@ -17,7 +17,7 @@ Popup Banner is a package to show banner slider using modal dialog. We can set t
 You must add the library as a dependency to your project.
 ```yaml
 dependencies:
- popup_banner: ^1.0.1
+  popup_banner_new: ^1.0.1
 ```
 You should then run flutter packages get
 

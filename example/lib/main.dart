@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:popup_banner/popup_banner.dart';
+import 'package:popup_banner_new/popup_banner.dart';
 
 void main() {
   runApp(const MyApp());
@@ -30,10 +30,10 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   List<String> images = [
-    "https://tinyurl.com/popup-banner-image",
-    "https://tinyurl.com/popup-banner-image2",
-    "https://tinyurl.com/popup-banner-image3",
-    "https://tinyurl.com/popup-banner-image4"
+    "https://images.unsplash.com/photo-1564466809058-bf4114d55352?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MjN8fHByb2R1Y3R8ZW58MHx8MHx8&w=600&q=80",
+    "https://images.unsplash.com/photo-1560769629-975ec94e6a86?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mzd8fHByb2R1Y3R8ZW58MHx8MHx8&w=600&q=80",
+    "https://images.unsplash.com/photo-1511556820780-d912e42b4980?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MjR8fHByb2R1Y3R8ZW58MHx8MHx8&w=600&q=80",
+    "https://images.unsplash.com/photo-1586495777744-4413f21062fa?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8N3x8cHJvZHVjdHxlbnwwfHwwfHw%3D&w=600&q=80"
   ];
 
   List<String> imagesLocal = [
