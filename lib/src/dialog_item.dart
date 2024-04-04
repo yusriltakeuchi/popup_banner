@@ -4,7 +4,6 @@ import 'package:popup_banner/src/slider_item.dart';
 class DialogItem extends StatelessWidget {
   final BuildContext context;
   final List<String> images;
-  final bool fromNetwork;
   final double? height;
   final BoxFit fit;
   final Function(int) onClick;
@@ -16,11 +15,12 @@ class DialogItem extends StatelessWidget {
   final bool autoSlide;
   final Widget? customCloseButton;
   final Duration slideChangeDuration;
+  final bool enableCache;
+
   const DialogItem({
     Key? key,
     required this.context,
     required this.images,
-    this.fromNetwork = true,
     this.height,
     this.fit = BoxFit.fill,
     required this.onClick,
@@ -32,6 +32,7 @@ class DialogItem extends StatelessWidget {
     this.slideChangeDuration = const Duration(seconds: 6),
     this.autoSlide = false,
     this.customCloseButton,
+    this.enableCache = false,
   }) : super(key: key);
 
   @override
@@ -75,7 +76,6 @@ class DialogItem extends StatelessWidget {
                 borderRadius: BorderRadius.circular(10),
                 child: SliderItem(
                   height: height ?? (MediaQuery.of(context).size.height * 0.8),
-                  fromNetwork: fromNetwork,
                   fit: fit,
                   imageList: images,
                   dotsAlignment: dotsAlignment,
@@ -85,6 +85,7 @@ class DialogItem extends StatelessWidget {
                   dotsColorInactive: dotsColorInactive,
                   dotsMarginBottom: dotsMarginBottom,
                   autoSlide: autoSlide,
+                  enableCache: enableCache,
                 ),
               )
             ],

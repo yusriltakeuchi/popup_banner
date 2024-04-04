@@ -1,10 +1,10 @@
 import 'dart:async';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
 class SliderItem extends StatefulWidget {
   final List<String> imageList;
   final double height;
-  final bool fromNetwork;
   final Function(int) onClick;
   final BoxFit fit;
   final AlignmentGeometry dotsAlignment;
@@ -14,12 +14,13 @@ class SliderItem extends StatefulWidget {
   final bool useDots;
   final bool autoSlide;
   final Duration slideChangeDuration;
+  final bool enableCache;
+
   const SliderItem({
     Key? key,
     required this.imageList,
     this.height = 180,
     required this.onClick,
-    this.fromNetwork = true,
     this.fit = BoxFit.cover,
     this.dotsAlignment = Alignment.bottomLeft,
     this.dotsColorActive = Colors.green,
@@ -28,6 +29,7 @@ class SliderItem extends StatefulWidget {
     this.useDots = true,
     this.autoSlide = true,
     this.slideChangeDuration = const Duration(seconds: 6),
+    this.enableCache = false,
   }) : super(key: key);
 
   @override
@@ -93,35 +95,36 @@ class _SliderItemState extends State<SliderItem> {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-        height: widget.height,
-        child: Stack(
-          children: <Widget>[
-            PageView.builder(
-              controller: controller,
-              physics: const BouncingScrollPhysics(),
-              itemCount: widget.imageList.length,
-              onPageChanged: (position) => onChange(position),
-              itemBuilder: (context, index) {
-                var item = widget.imageList[index];
-                return _imageItem(index, item);
-              },
-            ),
-            widget.useDots
-                ? Align(
-                    alignment: widget.dotsAlignment,
-                    child: Padding(
-                      padding: const EdgeInsets.only(
-                        bottom: 10,
-                        left: 20,
-                        right: 20,
-                        top: 10,
-                      ),
-                      child: _dotProgress(),
+      height: widget.height,
+      child: Stack(
+        children: <Widget>[
+          PageView.builder(
+            controller: controller,
+            physics: const BouncingScrollPhysics(),
+            itemCount: widget.imageList.length,
+            onPageChanged: (position) => onChange(position),
+            itemBuilder: (context, index) {
+              var item = widget.imageList[index];
+              return _imageItem(index, item);
+            },
+          ),
+          widget.useDots
+              ? Align(
+                  alignment: widget.dotsAlignment,
+                  child: Padding(
+                    padding: const EdgeInsets.only(
+                      bottom: 10,
+                      left: 20,
+                      right: 20,
+                      top: 10,
                     ),
-                  )
-                : const SizedBox()
-          ],
-        ));
+                    child: _dotProgress(),
+                  ),
+                )
+              : const SizedBox()
+        ],
+      ),
+    );
   }
 
   Widget _dotProgress() {
@@ -162,15 +165,21 @@ class _SliderItemState extends State<SliderItem> {
   Widget _imageItem(int index, String item) {
     return GestureDetector(
       onTap: () => widget.onClick(index),
-      child: widget.fromNetwork
-          ? Image.network(
-              item,
-              fit: widget.fit,
-            )
-          : Image.asset(
-              item,
-              fit: widget.fit,
-            ),
+      child: Container(
+        decoration: BoxDecoration(
+          image: widget.enableCache == true
+              ? DecorationImage(image: CachedNetworkImageProvider(item), fit: widget.fit)
+              : item.contains("http") || item.contains("www")
+                  ? DecorationImage(
+                      image: NetworkImage(item),
+                      fit: widget.fit,
+                    )
+                  : DecorationImage(
+                      image: AssetImage(item),
+                      fit: widget.fit,
+                    ),
+        ),
+      ),
     );
   }
 }

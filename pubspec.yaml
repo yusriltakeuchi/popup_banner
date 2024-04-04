@@ -1,15 +1,16 @@
 name: popup_banner
 description: Popup Banner is a package to show banner slider using modal dialog
-version: 1.0.0
+version: 1.0.1
 homepage: https://github.com/yusriltakeuchi/popup_banner.git
 
 environment:
-  sdk: ">=2.17.6 <3.0.0"
+  sdk: ">=2.17.6 <3.4.0"
   flutter: ">=1.17.0"
 
 dependencies:
   flutter:
     sdk: flutter
+  cached_network_image: ^3.3.1
 
 dev_dependencies:
   flutter_test:

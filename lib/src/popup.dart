@@ -4,7 +4,6 @@ import 'package:popup_banner/src/dialog_item.dart';
 class PopupBanner {
   final BuildContext context;
   final List<String> images;
-  final bool fromNetwork;
   final double? height;
   final BoxFit fit;
   final AlignmentGeometry dotsAlignment;
@@ -16,10 +15,11 @@ class PopupBanner {
   final Widget? customCloseButton;
   final Duration slideChangeDuration;
   final Function(int) onClick;
+  final bool enableCache;
+
   PopupBanner({
     required this.context,
     required this.images,
-    this.fromNetwork = true,
     this.height,
     this.fit = BoxFit.fill,
     this.dotsAlignment = Alignment.bottomLeft,
@@ -31,6 +31,7 @@ class PopupBanner {
     this.slideChangeDuration = const Duration(seconds: 6),
     this.customCloseButton,
     required this.onClick,
+    this.enableCache = false,
   });
 
   Future<void> show() {
@@ -39,7 +40,6 @@ class PopupBanner {
       builder: (context) => DialogItem(
         context: context,
         images: images,
-        fromNetwork: fromNetwork,
         fit: fit,
         height: height,
         dotsAlignment: dotsAlignment,
@@ -50,6 +50,8 @@ class PopupBanner {
         autoSlide: autoSlide,
         customCloseButton: customCloseButton,
         onClick: (index) => onClick(index),
+        slideChangeDuration: slideChangeDuration,
+        enableCache: enableCache,
       ),
     );
   }

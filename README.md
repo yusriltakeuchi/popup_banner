@@ -10,13 +10,14 @@ Popup Banner is a package to show banner slider using modal dialog. We can set t
 - Load Image From Network & Local
 - Auto Slider & Timer
 - Custom Dots Indicator Position & Color
+- Cache image
 
 ## Getting started
 
 You must add the library as a dependency to your project.
 ```yaml
 dependencies:
- popup_banner: ^1.0.0
+ popup_banner: ^1.0.1
 ```
 You should then run flutter packages get
 
@@ -30,6 +31,7 @@ There is a detailed example project in the `example` folder. You can directly ru
 ```dart
 PopupBanner(
   context: context,
+  enableCache: true,
   images: [
     "https://tinyurl.com/popup-banner-image",
     "https://tinyurl.com/popup-banner-image2",
@@ -48,6 +50,7 @@ PopupBanner(
 ```dart
 PopupBanner(
   context: context,
+  enableCache: true,
   images: [
     "https://tinyurl.com/popup-banner-image",
     "https://tinyurl.com/popup-banner-image2",
@@ -67,6 +70,7 @@ PopupBanner(
 ```dart
 PopupBanner(
   context: context,
+  enableCache: true,
   images: [
     "https://tinyurl.com/popup-banner-image",
     "https://tinyurl.com/popup-banner-image2",
@@ -88,6 +92,7 @@ PopupBanner(
 ```dart
 PopupBanner(
   context: context,
+  enableCache: true,
   images: [
     "https://tinyurl.com/popup-banner-image",
     "https://tinyurl.com/popup-banner-image2",

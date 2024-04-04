@@ -47,6 +47,7 @@ class _HomePageState extends State<HomePage> {
     PopupBanner(
       context: context,
       images: images,
+      enableCache: true,
       onClick: (index) {
         debugPrint("CLICKED $index");
       },
@@ -58,6 +59,7 @@ class _HomePageState extends State<HomePage> {
       context: context,
       images: images,
       useDots: false,
+      enableCache: true,
       onClick: (index) {
         debugPrint("CLICKED $index");
       },
@@ -70,6 +72,7 @@ class _HomePageState extends State<HomePage> {
       images: images,
       dotsAlignment: Alignment.bottomCenter,
       dotsColorActive: Colors.blue,
+      enableCache: true,
       dotsColorInactive: Colors.grey.withOpacity(0.5),
       onClick: (index) {
         debugPrint("CLICKED $index");
@@ -82,10 +85,11 @@ class _HomePageState extends State<HomePage> {
       context: context,
       images: images,
       autoSlide: false,
+      enableCache: true,
       customCloseButton: ElevatedButton(
         onPressed: () => Navigator.pop(context),
         style: ElevatedButton.styleFrom(
-          primary: Colors.blue,
+          backgroundColor: Colors.blue,
         ),
         child: const Text(
           "Close",
@@ -104,7 +108,6 @@ class _HomePageState extends State<HomePage> {
     PopupBanner(
       context: context,
       images: imagesLocal,
-      fromNetwork: false,
       onClick: (index) {},
     ).show();
   }
@@ -149,7 +152,7 @@ class _HomePageState extends State<HomePage> {
     return ElevatedButton(
       onPressed: () => onClick(),
       style: ElevatedButton.styleFrom(
-        primary: Colors.blue,
+        backgroundColor: Colors.blue,
       ),
       child: Text(
         title,
